@@ -35,7 +35,7 @@ export default function ProductsPage() {
 
 <Card>
    <CardHeader>
-          <CardTitle>Users List</CardTitle>
+          <CardTitle>Products List</CardTitle>
         </CardHeader>
 <CardContent className="space-y-6">
 

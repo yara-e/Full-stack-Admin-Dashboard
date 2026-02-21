@@ -13,11 +13,18 @@ import {
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/store";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function UsersActionsDropdown({ user }: { user: User }) {
   const currentUser = useSelector((s: RootState) => s.auth.user);
-
+const navigate = useNavigate();
+ const [openEdit, setOpenEdit] = useState(false);
+const handleViewOrders = (user: User) => {
+  navigate(`/users/${user.id}/orders`);
+};
   return (
+<>
     <DropdownMenu>
 
       <DropdownMenuTrigger asChild>
@@ -26,26 +33,32 @@ export default function UsersActionsDropdown({ user }: { user: User }) {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="space-y-2">
 
         {/* Edit */}
-        <DropdownMenuItem  asChild onSelect={(e) => e.preventDefault()}>
-          <div>
-            <EditUserModal user={user} />
-          </div>
+        <DropdownMenuItem  asChild onClick={() => setOpenEdit(true)}>
+           <Button>Edit</Button>
         </DropdownMenuItem>
 
         {/* Delete */}
         <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
-          <div>
+          
             <DeleteUserDialog
               id={user.id}
               disabled={currentUser?.id === user.id}
             />
-          </div>
+          
         </DropdownMenuItem>
+<DropdownMenuItem onClick={() => handleViewOrders(user)}>
+  View Orders
+</DropdownMenuItem>
 
       </DropdownMenuContent>
     </DropdownMenu>
+ <EditUserModal user={user} 
+  open={openEdit}
+        onOpenChange={setOpenEdit}
+ />
+    </>
   );
 }

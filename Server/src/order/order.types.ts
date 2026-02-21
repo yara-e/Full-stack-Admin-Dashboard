@@ -4,5 +4,5 @@ export interface FindOrderQuery{
     before?:string;
     search?:string;
     status?:string;
-    userId?:number;
+    userId?:string;
 }

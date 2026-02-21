@@ -10,8 +10,10 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../app/store";
 import type { JSX } from "react";
 import LoginPage from "@/features/auth/LoginPage";
-import UsersPage from "@/features/users/UsersPage";
-
+import UsersPage  from "@/features/users/UsersPage";
+import UsersOrdersPage from "@/features/users/UsersOrderPage"
+ 
+import OrderDetails from "./../features/orders/orderDetails";
 const ProtectedRoute = ({ children, allowedRoles }: { children: JSX.Element; allowedRoles: string[] }) => {
    const { user, token } = useSelector(
     (state: RootState) => state.auth
@@ -42,11 +44,17 @@ export default function AppRouter() {
           <Route path="users" element={
             <ProtectedRoute allowedRoles={["ADMIN"]}><UsersPage /></ProtectedRoute>
           } />
+
+          <Route path="/users/:id/orders" element={ <ProtectedRoute allowedRoles={["ADMIN"]}><UsersOrdersPage /></ProtectedRoute>} />
+
           <Route path="products" element={
             <ProtectedRoute allowedRoles={["ADMIN","MANAGER"]}><ProductsPage /></ProtectedRoute>
           } />
           <Route path="orders" element={
             <ProtectedRoute allowedRoles={["ADMIN","MANAGER"]}><OrdersPage /></ProtectedRoute>
+          } />
+           <Route path="orders/:id" element={
+            <ProtectedRoute allowedRoles={["ADMIN","MANAGER"]}><OrderDetails /></ProtectedRoute>
           } />
           {/* <Route path="analysis" element={
             <ProtectedRoute allowedRoles={["admin","manager","user"]}><AnalysisPage /></ProtectedRoute>

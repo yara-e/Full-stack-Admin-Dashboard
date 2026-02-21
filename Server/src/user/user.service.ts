@@ -23,7 +23,15 @@ export const getUsersService = async (query: FindUsersQuery) => {
   });
 
   const hasMore = users.length > limit;
-  if (hasMore) users.pop();
+  if (hasMore) {
+  if (before) {
+    // backward pagination → remove first item
+    users.shift();
+  } else {
+    // forward pagination → remove last item
+    users.pop();
+  }
+}
 
   // cursors
   let nextCursor: string | null = null;

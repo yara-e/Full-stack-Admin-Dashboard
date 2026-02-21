@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+ 
 import { useUpdateUser } from "../hooks/useUsersMutations";
 import type { User } from "../users.types";
 
@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
@@ -23,8 +23,14 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export default function EditUserModal({ user }: { user: User }) {
-  const [open, setOpen] = useState(false);
+export default function EditUserModal({ user  ,  open,
+  onOpenChange}:{
+    user:User,
+    open:boolean,
+   onOpenChange: (open: boolean) => void;
+  }
+) {
+ 
   const mutation = useUpdateUser();
 
   const form = useForm<FormData>({
@@ -40,16 +46,14 @@ export default function EditUserModal({ user }: { user: User }) {
     mutation.mutate(
       { id: user.id, data },
       {
-        onSuccess: () => setOpen(false),
+        onSuccess: () => onOpenChange(false),
       }
     );
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm">Edit</Button>
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+    
 
       <DialogContent>
         <DialogHeader>
@@ -80,3 +84,4 @@ export default function EditUserModal({ user }: { user: User }) {
     </Dialog>
   );
 }
+ 

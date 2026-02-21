@@ -1,7 +1,8 @@
 import type { User } from "../users.types";
- 
+ //import { ExternalLink } from 'lucide-react';
  
 import UsersActionsDropdown from "./UsersActionDropDown";
+
 
 interface Props {
   users: User[];
@@ -18,6 +19,7 @@ export default function UsersTable({ users }: Props) {
             <th className="p-3 text-left">Name</th>
             <th className="p-3 text-left hidden lg:table-cell">Email</th>
             <th className="p-3 text-left">Role</th>
+           
             <th className="p-3 text-left">Actions</th>
           </tr>
         </thead>
@@ -28,7 +30,7 @@ export default function UsersTable({ users }: Props) {
               <td className="p-3">{user.name}</td>
               <td className="p-3 hidden lg:table-cell">{user.email}</td>
               <td className="p-3">{user.role}</td>
-
+ 
               <td className="p-3">
   <UsersActionsDropdown user={user} />
 </td>

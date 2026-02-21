@@ -1,4 +1,4 @@
-import { findOrdersService, getOrderByIdService, updateOrderStatusService } from "./order.service";
+import { findOrdersService, getOrderByIdService, getuserOrdersService, updateOrderStatusService } from "./order.service";
 import { Request, Response } from "express";
 export const getOrderDetailsHandler = async (
   req: Request,
@@ -24,3 +24,8 @@ export const updateOrderStatusHandler = async (req: Request, res: Response) => {
 
   res.json(order);
 };
+
+export const getuserOrdersHandler= async(req:Request , res:Response)=>{
+  const orders = await getuserOrdersService(Number(req.params.id))
+  res.json(orders)
+}

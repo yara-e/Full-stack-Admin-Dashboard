@@ -17,4 +17,4 @@ export const useProducts = (params: ProductsQueryParams) => {
         queryFn: () => getProducts(params),
         placeholderData: (previousData) => previousData,
     })
-}
+} 

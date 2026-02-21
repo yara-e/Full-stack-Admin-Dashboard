@@ -35,9 +35,15 @@ export const getProductService = async (query: FindProductQuery) => {
 
   const hasMore = products.length > limit;
 
-  if (hasMore) {
-    products.pop(); // remove extra item
+ if (hasMore) {
+  if (before) {
+    // backward pagination → remove first item
+    products.shift();
+  } else {
+    // forward pagination → remove last item
+    products.pop();
   }
+}
   // cursors
   let nextCursor: string | null = null;
   let prevCursor: string | null = null;

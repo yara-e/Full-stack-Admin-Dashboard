@@ -3,7 +3,7 @@ import ProductActionsDropdown from "./ProductActionsDropdown";
 
 interface Props {
   products: Product[];
-}
+} 
 
 export default function ProductsTable({ products }: Props) {
    
