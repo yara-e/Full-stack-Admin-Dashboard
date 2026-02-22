@@ -31,10 +31,11 @@ export default function ProductsPage() {
   return (
     <div className="space-y-6">
 
-       <h1 className="text-2xl font-semibold">Products Management</h1>
+       
 
-<Card>
+<Card className="bg-white relative z-50">
    <CardHeader>
+    <h1 className="text-2xl font-semibold mb-5">Products Management</h1>
           <CardTitle>Products List</CardTitle>
         </CardHeader>
 <CardContent className="space-y-6">

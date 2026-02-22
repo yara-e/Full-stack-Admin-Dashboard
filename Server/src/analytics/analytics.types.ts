@@ -11,6 +11,7 @@ export interface chartResponse{
 export interface OverviewResponse{
     totalUsers: number;
     totalOrders: number;
-    totalRevenu: number;
+    totalRevenue: number;
     totalProducts: number;
 }
+export type TrendGroupBy = "day" | "week" | "month";

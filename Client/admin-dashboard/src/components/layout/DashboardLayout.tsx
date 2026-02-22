@@ -10,7 +10,7 @@ const DashboardLayout = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden">
+    <div className="h-screen flex overflow-hidden bg-stone-50 grain-texture overflow-x-auto   ">
 
       {/* Desktop Sidebar */}
       <div className="hidden md:block">
@@ -29,7 +29,7 @@ const DashboardLayout = () => {
 
         <Navbar openSidebar={() => setOpen(true)} />
 
-        <main className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <main className="flex-1 overflow-y-auto p-4 ">
           <Outlet />
         </main>
 

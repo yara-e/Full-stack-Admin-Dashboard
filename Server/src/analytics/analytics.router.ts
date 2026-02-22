@@ -1,14 +1,26 @@
 import { Router } from "express";
 import * as controller from "./analytics.controller";
- import { authenticate }  from "../common/middleware/auth.middleware";
+import { authenticate } from "../common/middleware/auth.middleware";
 import { allowRoles } from "../common/middleware/role.middleware";
 
 const analyticsRouter = Router();
 
-analyticsRouter.get("/overview",authenticate,allowRoles("ADMIN", "MANAGER"), controller.overviewHandler);
-analyticsRouter.get("/charts/orders-trend",authenticate,allowRoles("ADMIN", "MANAGER"), controller.ordersTrendHandler);
-analyticsRouter.get("/charts/orders-status",authenticate,allowRoles("ADMIN", "MANAGER"), controller.ordersStatusHandler);
-analyticsRouter.get("/charts/user-roles", authenticate,allowRoles("ADMIN", "MANAGER"),controller.userRolesHandler);
-analyticsRouter.get("/charts/best-sellers", authenticate,allowRoles("ADMIN", "MANAGER"),controller.bestSellersHandler);
+const route = [authenticate, allowRoles("ADMIN", "MANAGER")];
 
-export default analyticsRouter;
+// Overview
+analyticsRouter.get("/overview", ...route, controller.overviewHandler);
+
+// Charts
+analyticsRouter.get("/charts/orders-trend", ...route, controller.ordersTrendHandler);
+analyticsRouter.get("/charts/orders-status", ...route, controller.ordersStatusHandler);
+analyticsRouter.get("/charts/user-roles", ...route, controller.userRolesHandler);
+analyticsRouter.get("/charts/best-sellers", ...route, controller.bestSellersHandler);
+
+// New Advanced Analytics
+analyticsRouter.get("/charts/revenue-by-payment", ...route, controller.revenueByPaymentMethodHandler);
+analyticsRouter.get("/charts/orders-per-hour", ...route, controller.ordersPerHourHandler);
+analyticsRouter.get("/charts/top-customers", ...route, controller.topCustomersHandler);
+analyticsRouter.get("/charts/low-stock-products", ...route, controller.lowStockProductsHandler);
+analyticsRouter.get("/charts/order-completion-rate", ...route, controller.orderCompletionRateHandler);
+
+export default analyticsRouter; 

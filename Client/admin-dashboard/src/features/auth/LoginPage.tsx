@@ -33,7 +33,7 @@ const LoginPage = () => {
       saveToken(data.token);
       dispatch(setAuth(data));
 
-      navigate("/");
+      navigate("/dashboard");
     }  
     catch (error) {
   if (error instanceof AxiosError) {
@@ -48,8 +48,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/40 px-4" >
-    <Card className="w-full max-w-md shadow-lg rounded-2xl">
+    <div className="min-h-screen flex items-center justify-center  px-4 bg-stone-50 grain-texture" >
+    <Card className="w-full max-w-md shadow-lg rounded-2xl bg-white z-50">
       <CardHeader className="text-center space-y-2">
        <h1 className="text-2xl font-semibold">Welcome Back</h1>
         <p className="text-sm text-muted-foreground">

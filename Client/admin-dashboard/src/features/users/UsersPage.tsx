@@ -20,7 +20,7 @@ export default function UsersPage() {
   const [before, setBefore] = useState<string>();
 
   const { data, isLoading } = useUsers({
-    limit: 5,
+    limit: 5, 
     search,
     role,
     after,
@@ -33,12 +33,13 @@ export default function UsersPage() {
   };
 
   return (
-    <div className="space-y-6  ">
+    <div className="space-y-6   ">
       {/* Page Title */}
-      <h1 className="text-2xl font-semibold">Users Management</h1>
+      
 
-      <Card>
+      <Card className="bg-white relative z-50 ">
         <CardHeader>
+          <h1 className="text-2xl font-semibold mb-5">Users Management</h1>
           <CardTitle>Users List</CardTitle>
         </CardHeader>
 
