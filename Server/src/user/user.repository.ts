@@ -1,5 +1,5 @@
 import {prisma} from "../common/db/client";
-import { UserRole } from "../generated/prisma/enums";
+import type { UserRole } from "./user.types"
 
 interface FindUsersParams{
  limit:number;

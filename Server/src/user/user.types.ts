@@ -1,4 +1,4 @@
-import { UserRole } from "../generated/prisma/enums";
+//import { UserRole } from "../generated/prisma/enums";
 
 // export interface FindUsersQuery{
 //     page?:string;
@@ -7,6 +7,8 @@ import { UserRole } from "../generated/prisma/enums";
 //     role?:UserRole  
 // }
 
+export type UserRole = "ADMIN" | "MANGER" | "USER";
+
 export interface FindUsersQuery {
   limit?: string;
   after?: string;
@@ -14,3 +16,4 @@ export interface FindUsersQuery {
   search?: string;
   role?: UserRole;
 }
+
