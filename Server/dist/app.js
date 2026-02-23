@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const correlationId_1 = __importDefault(require("./common/correlation/correlationId"));
+const errorHandler_1 = __importDefault(require("./common/error/errorHandler"));
+const auth_routes_1 = __importDefault(require("./auth/auth.routes"));
+const user_routes_1 = __importDefault(require("./user/user.routes"));
+const product_routes_1 = __importDefault(require("./product/product.routes"));
+const order_routes_1 = __importDefault(require("./order/order.routes"));
+const analytics_router_1 = __importDefault(require("./analytics/analytics.router"));
+const rateLimitingMiddleware_1 = require("./common/middleware/rateLimiting/rateLimitingMiddleware");
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use(correlationId_1.default);
+app.use(rateLimitingMiddleware_1.rateLimitMiddleware);
+app.use("/auth", auth_routes_1.default);
+app.use("/users", user_routes_1.default);
+app.use("/product", product_routes_1.default);
+app.use("/orders", order_routes_1.default);
+app.use("/analytics", analytics_router_1.default);
+app.use(errorHandler_1.default);
+exports.default = app;
