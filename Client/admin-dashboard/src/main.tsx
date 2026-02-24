@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import { decodeToken, getToken, isTokenExpired } from "./utils/token";
 import { store } from "./app/store";
 import { logout, setAuth } from "./features/auth/authSlice";
+import type { UserRole } from "./features/auth/auth.types";
 const token = getToken();
 
 if (token) {
@@ -19,7 +20,9 @@ if (token) {
       setAuth({
         user: {
           id: decoded.id,
-          role: decoded.role,
+          role: decoded.role as UserRole,
+          name: "",
+          email: ""
         },
         token,
       })

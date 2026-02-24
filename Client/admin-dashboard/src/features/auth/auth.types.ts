@@ -12,3 +12,7 @@ export interface LoginResponse {
     token: string;
     user: User;
 }
+export interface AuthUserFromToken {
+  id: number;
+  role: UserRole;
+}

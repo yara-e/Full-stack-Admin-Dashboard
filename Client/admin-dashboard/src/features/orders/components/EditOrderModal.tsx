@@ -38,14 +38,14 @@ export default function EditOrderModal({
     },
   });
 
-  const onSubmit = (status: OrderStatus) => {
-    mutation.mutate(
-      { id, status: status },
-      {
-        onSuccess: () => onOpenChange(false),
-      }
-    );
-  };
+const onSubmit = (data: FormData) => {
+  mutation.mutate(
+    { id, status: data.status },
+    {
+      onSuccess: () => onOpenChange(false),
+    }
+  );
+};
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

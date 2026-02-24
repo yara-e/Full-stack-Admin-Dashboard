@@ -35,5 +35,20 @@ export interface OrdersParams {
     limit?: number;
     after?: string;
     before?: string;
-    status?: OrderStatus;
+    status?: string;
+}
+
+export interface OrderProduct {
+    id:number,
+    quantity: number,
+    price: number,
+    orderId: number,
+    productId: number,
+    Product: { id: number, name: string }
+} 
+export interface Payment{
+    id:number ,
+    method:string,
+    status:string,
+    
 }

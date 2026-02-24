@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
  
 import { Button } from "@/components/ui/button";
 import { useOrderDetails } from "./hooks/useOrderDetails";
+import type { OrderProduct } from "./orders.types";
+ 
 
 export default function OrderDetails() {
   const { id } = useParams();
@@ -105,7 +107,7 @@ export default function OrderDetails() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.order.OrderProduct.map((item) => (
+                    {data.order.OrderProduct.map((item : OrderProduct) => (
                       <tr key={item.id} className="border-t">
                         <td className="p-2">
                           {item.Product?.name}

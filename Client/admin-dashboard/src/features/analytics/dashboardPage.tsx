@@ -21,7 +21,7 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card} from "@/components/ui/card";
 const COLORS = ["#2563eb", "#16a34a", "#f59e0b", "#ef4444"];
 
 export default function DashboardPage() {
@@ -84,7 +84,7 @@ export default function DashboardPage() {
             />
             <CardT
               title="Revenue"
-              value={`$${parseInt(overview?.totalRevenue) ?? 0}`}
+              value={`${(overview?.totalRevenue) ?? 0}`}
             />
           </div>
         </section>
@@ -187,7 +187,10 @@ function CardT({
   value: number | string | undefined;
 }) {
   const Icon = icons[title as keyof typeof icons];
-
+const formattedValue =
+    value !== undefined
+      ? Math.floor(Number(value))
+      : 0;
   return (
     <div className="bg-white rounded-2xl p-6 border border-slate-200 transition hover:shadow-sm">
       <div className="flex items-center justify-between">
@@ -201,7 +204,7 @@ function CardT({
       </div>
 
       <h2 className="text-3xl font-semibold mt-4">
-        {value ?? 0}
+        {formattedValue ?? 0}
       </h2>
     </div>
   );

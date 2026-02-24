@@ -11,11 +11,11 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import type { OrderStatus } from "./orders.types";
+//import type { OrderStatus } from "./orders.types";
 export default function OrderPage  ()  {
  const [after, setAfter] = useState<string>();
   const [before, setBefore] = useState<string>();
-const [status , setStatus] = useState<OrderStatus>();
+const [status , setStatus] = useState<string>();
   const { data, isLoading } = useOrders({
       limit: 5,
   status,
