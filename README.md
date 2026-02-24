@@ -5,6 +5,11 @@ A full-stack e-commerce management system with a secure backend and a modern ana
 The system includes authentication, role-based authorization, cursor-based pagination, global rate limiting, and caching for optimized performance.
 
 ---
+# Live Demo 
+[click here] (https://dashboard-for-admins.up.railway.app/)
+demo credentials:
+- email : emily_thomas9@example.com
+- password : 123456
 
 ## Tech Stack
 
